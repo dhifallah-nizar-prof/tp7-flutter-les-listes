@@ -30,6 +30,8 @@ class _HomePageState extends State<HomePage> {
             ),
             title: Text(listeContacts[index].nom),
             subtitle: Text(listeContacts[index].tel),
+            trailing: IconButton(onPressed: () {
+            }, icon:Icon( Icons.call)),
           ),
         );
       },
