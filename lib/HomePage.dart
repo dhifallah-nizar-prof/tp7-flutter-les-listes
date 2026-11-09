@@ -1,4 +1,6 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tp7_flutter_lists_bis/contact.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,10 +46,19 @@ class _HomePageState extends State<HomePage> {
             ),
             title: Text(listeContacts[index].nom),
             subtitle: Text(listeContacts[index].tel),
-            trailing: IconButton(onPressed: () {
+            trailing: IconButton(onPressed: ( ) {
+              FlutterPhoneDirectCaller.callNumber(listeContacts[index].tel);
             }, icon:Icon( Icons.call)),
             onTap: () {
-             showAlertDialog(context, listeContacts[index].nom);
+             //showAlertDialog(context, listeContacts[index].nom);
+             Fluttertoast.showToast(
+                msg: listeContacts[index].nom,
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+               backgroundColor: Colors.black,
+               textColor: Colors.white,
+               fontSize: 16,
+              );
             },
           ),
         );
