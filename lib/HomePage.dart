@@ -15,6 +15,20 @@ class _HomePageState extends State<HomePage> {
     Contact("Emma", "25 123456","assets/images/avatar5.png"),
     Contact("Marie", "26 123456","assets/images/avatar6.png"),
   ];
+  showAlertDialog(BuildContext context, String message)
+  {
+    //Création des Boutons
+    Widget cancelButton=TextButton(onPressed: () => Navigator.pop(context), child: Text("Cancel"));
+    Widget continueButton=TextButton(onPressed: () => Navigator.pop(context), child: Text("Continue"));
+    //Création de AlertDialog
+    AlertDialog alert=AlertDialog(
+      title: Text("AlertDialog"),
+      content: Text(message),
+      actions: [cancelButton, continueButton],
+    );
+    //Affichage de DialogBox
+    showDialog(context: context, builder:(context) { return alert; },);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +46,9 @@ class _HomePageState extends State<HomePage> {
             subtitle: Text(listeContacts[index].tel),
             trailing: IconButton(onPressed: () {
             }, icon:Icon( Icons.call)),
+            onTap: () {
+             showAlertDialog(context, listeContacts[index].nom);
+            },
           ),
         );
       },
